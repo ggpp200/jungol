@@ -203,9 +203,27 @@ for idx in range(N):
 
 
 
+code1146 선택정렬(time  5m)
+
+```
+N = int(input())
+N_list = list(map(int, input().split()))
+for index in range(N - 1):
+    min_num = N_list[index]
+    idx = index
+    for i in range(index, N ):
+        if min_num > N_list[i]:
+            min_num = N_list[i]
+            idx = i
+    N_list[index], N_list[idx] = N_list[idx], N_list[index]
+    print(*N_list)
+```
+
+
+
 ## code1221 후위표기법1(time 1h 36m 51s)
 
-# 이거 문제 이해를 잘못하면 바로 70점 나옵니당
+이거 문제 이해를 잘못하면 바로 70점 나옵니당
 
 ```bash
 M = int(input())
