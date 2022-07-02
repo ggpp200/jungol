@@ -181,6 +181,8 @@ for idx in range(0, n):
 
 ```
 
+
+
 ## code1338 문자삼각형1(time 1h 20m)
 
 ```bash
@@ -203,7 +205,27 @@ for idx in range(N):
 
 
 
-code1146 선택정렬(time  5m)
+## code1339 문자삼각형2(time 48m 4s)
+
+```bash
+N = int(input())
+if 1 <= N <=100 and N % 2 == 1:
+    for idx in range(N):
+        for jdx in range(N):
+            word = 65 + (N // 2 - jdx) ** 2
+            if idx >= jdx and N - 1 - idx >= jdx:
+                word += idx - jdx
+                while word > 90:
+                    word = word - 26
+                print(chr(word), end=' ')
+        print()
+else:
+    print('INPUT ERROR')
+```
+
+
+
+## code1146 선택정렬(time  5m)
 
 ```
 N = int(input())
@@ -255,5 +277,51 @@ while len(M_list) > 1:
             idx -= 2
         idx += 1
 print(M_list[0])
+```
+
+
+
+## code1169 주사위 던지기1(time 20m 진하피셜)
+
+```bash
+N, M = map(int, input().split())
+dice_list = []
+dice_list2 = []
+dice_visit2 = []
+dice_list3 = []
+dice_visit3 = [True] * 7
+
+def dice(n, m):
+    if m == 1:
+        if len(dice_list) == n:
+            print(*dice_list)
+            return
+        for num in range(1, 7):
+            dice_list.append(num)
+            dice(n, m)
+            dice_list.pop()
+    elif m == 2:
+        if len(dice_list2) == n:
+            sort_list2 = sorted(dice_list2)
+            if sort_list2 not in dice_visit2:
+                dice_visit2.append(sort_list2)
+                print(*dice_list2)
+            return
+        for num in range(1, 7):
+            dice_list2.append(num)
+            dice(n, m)
+            dice_list2.pop()
+    elif m == 3:
+        if len(dice_list3) == n:
+            print(*dice_list3)
+            return
+        for num in range(1, 7):
+            if dice_visit3[num] is True:
+                dice_list3.append(num)
+                dice_visit3[num] = False
+                dice(n, m)
+                dice_visit3[num] = True
+                dice_list3.pop()
+dice(N, M)
 ```
 
