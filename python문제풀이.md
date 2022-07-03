@@ -225,6 +225,58 @@ else:
 
 
 
+## code1692 곱셈(time 6m 11s)
+
+```bash
+num1 = int(input())
+num2 = int(input())
+for per in range(3):
+    num_right = num2 // (10 ** per) % 10
+    print(num1 * num_right)
+print(num1 * num2)
+```
+
+
+
+## code1430 숫자의 개수(time 12m 37s)
+
+```bash
+A = int(input())
+B = int(input())
+C = int(input())
+num_list = [0] * 10
+value = A * B * C
+while value > 0:
+    num_list[value % 10] += 1
+    value = value // 10
+
+for i in range(10):
+    print(num_list[i])
+
+
+```
+
+
+
+## code1071 약수와 배수(time 5m 26s)
+
+```bash
+N = int(input())
+N_list = list(map(int, input().split()))
+divisor_list = []
+multiple_list = []
+number = int(input())
+for one_N in N_list:
+    if number % one_N == 0:
+        divisor_list.append(one_N)
+    if one_N % number == 0:
+        multiple_list.append(one_N)
+print(sum(divisor_list))
+print(sum(multiple_list))
+```
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
