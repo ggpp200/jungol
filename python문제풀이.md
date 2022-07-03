@@ -258,7 +258,7 @@ for i in range(10):
 
 
 
-## code1071 약수와 배수(time 5m 26s)
+## code1071 약수와 배수(time 5m 27s)
 
 ```bash
 N = int(input())
