@@ -277,6 +277,42 @@ print(sum(multiple_list))
 
 
 
+## code1402 약수구하기(time 3m 31s)
+
+```bash
+N, K = map(int, input().split())
+order = 0
+value = 0
+for N_div in range(1, N):
+    if N % N_div == 0:
+        order += 1
+    if order == K:
+        value = N_div
+        break
+print(value)
+
+```
+
+
+
+## code2809 약수(time 9m 19s)
+
+```bash
+N = int(input())
+sq = int(N ** (1/2))
+N_list = []
+for N_div in range(1, sq + 1):
+    if N % N_div == 0:
+        N_list.append(N_div)
+        if N_div != N // N_div:
+            N_list.append(N // N_div)
+N_list.sort()
+print(*N_list)
+
+```
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
