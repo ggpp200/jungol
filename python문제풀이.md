@@ -313,6 +313,58 @@ print(*N_list)
 
 
 
+## code1658 최대공약수와 최소공배수(time  5m)
+
+```bash
+N, M = map(int, input().split())
+N_list = [0] * 10001
+M_list = [0] * 10001
+N_max_idx = 0
+M_max_idx = 0
+max_idx = 0
+min_num = 1
+max_num = 1
+case = 0
+for num in [N, M]:
+    case += 1
+
+    while 1 < num:
+        for div in range(2, num + 1):
+            if num % div == 0:
+                num = num // div
+                if case == 1:
+                    N_list[div] += 1
+                    if N_max_idx < div:
+                        N_max_idx = div
+                else:
+                    M_list[div] += 1
+                    if M_max_idx < div:
+                        M_max_idx = div
+if N_max_idx > M_max_idx:
+    max_idx = N_max_idx
+else:
+    max_idx = M_max_idx
+
+for i in range(2, max_idx + 1):
+
+    if N_list[i] < M_list[i]:
+        if N_list[i] != 0:
+            min_num = min_num * i ** N_list[i]
+        if M_list[i] != 0:
+            max_num = max_num * i ** M_list[i]
+    else:
+        if M_list[i] != 0:
+            min_num = min_num * i ** M_list[i]
+        if N_list[i] != 0:
+            max_num = max_num * i ** N_list[i]
+print(min_num)
+print(max_num)
+```
+
+
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
