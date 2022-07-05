@@ -313,7 +313,7 @@ print(*N_list)
 
 
 
-## code1658 최대공약수와 최소공배수(time  5m)
+## code1658 최대공약수와 최소공배수(time  42m)
 
 ```bash
 N, M = map(int, input().split())
@@ -362,6 +362,53 @@ print(max_num)
 ```
 
 
+
+## code1002 최대공약수, 최소공배수(time  45m 41s)
+
+```bash
+T = int(input())
+number_list = list(map(int, input().split()))
+div_list = [[0] * 10001 for _ in range(T)]
+list_max_idx = 0
+M_max_idx = 0
+min_div_all = 1
+max_div_all = 1
+case = 0
+for num in number_list:
+    while 1 < num:
+        for div in range(2, num + 1):
+            if num % div == 0:
+                num = num // div
+                div_list[case][div] += 1
+
+                if list_max_idx < div:
+                    list_max_idx = div
+                break
+
+    case += 1
+
+for div in range(2, list_max_idx + 1):
+
+    min_div = 10000
+    max_div = 0
+    flag = 0
+    for i in range(0, T):
+        if div_list[i][div] != 0:
+            a = div_list[i][div]
+            if max_div < div_list[i][div]:
+                max_div = div_list[i][div]
+            if min_div > div_list[i][div] and flag == 0:
+                min_div = div_list[i][div]
+        else:
+            flag = 1
+            min_div = 0
+    if min_div != 10000:
+        min_div_all = min_div_all * div ** min_div
+    if max_div != 0:
+        max_div_all = max_div_all * div ** max_div
+
+print(f'{min_div_all} {max_div_all}')
+```
 
 
 
