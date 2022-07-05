@@ -412,6 +412,51 @@ print(f'{min_div_all} {max_div_all}')
 
 
 
+## code1523 별삼각형1(time 1h 22m 45s)
+
+```bash
+n, m = map(int, input().split())
+m3_list = [' '] * (n)
+star = 0
+case = 0
+if 1 <= m <= 3 and 1 <= n <= 100:
+    if m == 1:
+        star = 1
+    elif m == 2:
+        star = n
+    else:
+        star = 1
+    for floor in range(n):
+        star_output = star
+        if m == 1:
+            for i in range(star_output):
+                print('*', end='')
+            star += 1
+        elif m == 2:
+            for i in range(star_output):
+                print('*', end='')
+            star -= 1
+        elif m == 3:
+            i = 0
+            while i < n:
+                m3_list[n - 1 - i] = '*'
+                if i != 0:
+                    m3_list.append('*')
+                for m3 in m3_list:
+                    print(m3, end='')
+                print()
+                case = 1
+                i += 1
+            star += 1
+            if case == 1:
+                break
+        print()
+else:
+    print("INPUT ERROR!")
+```
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
