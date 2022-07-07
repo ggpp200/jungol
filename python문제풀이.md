@@ -690,6 +690,77 @@ for i in range(n):
 
 
 
+## code1707 달팽이사각형(time 18m 36s)
+
+```bash
+n = int(input())
+number = 1
+pascal_list = list([0] * n for _ in range(n))
+move = 0
+di = [0, 1, 0, -1]
+dj = [1, 0, -1, 0]
+i, j = 0, 0
+while 1:
+    stop = 0
+    pascal_list[i][j] = number
+    number += 1
+    for corner in range(2):
+        new_move = (move + corner) % 4
+        y = i + di[new_move]
+        x = j + dj[new_move]
+        if 0 <= y < n and 0 <= x < n and pascal_list[y][x] == 0:
+            i = y
+            j = x
+            move = new_move
+            break
+        else:
+            stop += 1
+    if stop == 2:
+        break
+
+for i in range(n):
+    print(*pascal_list[i])
+```
+
+
+
+## code1331 문자마름모(time 1h 54m 12s)
+
+```bash
+n = int(input())
+alpha_list = list([' '] * (n * 2 - 1) for _ in range((n * 2) - 1))
+alpha = 65
+di = [1, 1, -1, -1, 0]
+dj = [-1, 1, 1, -1, -1]
+move = 0
+i = 0
+j = n - 1
+while 1:
+    stop = 0
+    alpha_list[i][j] = chr(alpha)
+    for add in range(3):
+        new_move = (move + add) % 5
+        y2 = i + di[new_move]
+        x2 = j + dj[new_move]
+        if 0 <= y2 < ((n * 2) - 1) and 0 <= x2 < ((n * 2) - 1) and alpha_list[y2][x2] == ' ':
+            if n - 1 <= x2 + y2 < (n * 3) - 2:
+                if abs(x2 - y2) < n:
+                    i = y2
+                    j = x2
+                    move = new_move
+                    alpha += 1
+
+                    if alpha > 90:
+                        alpha -= 26
+                    break
+
+        stop += 1
+    if stop == 3:
+        break
+for idx in range((n * 2) - 1):
+    print(*alpha_list[idx])
+```
+
 
 
 ## code1146 선택정렬(time  5m)
