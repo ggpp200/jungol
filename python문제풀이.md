@@ -640,6 +640,56 @@ for line in range(N):
 
 
 
+## code2071 파스칼 삼각형(time 1h 23m 39s)
+
+```bash
+n, m = map(int, input().split())
+pascal_list = []
+if m == 2:
+    pascal_list = list([0] * 2 * n for _ in range(n))
+    pascal_list[n - 1][n - 1] = 1
+    for i in range(n-1, -1, -1):
+        for j in range(n * 2):
+            if pascal_list[i][j] == 0:
+                pascal_list[i][j] = ''
+            else:
+                y = i - 1
+                x = j - 1
+                if 0 <= y and 0 <= x:
+                    pascal_list[y][x] += pascal_list[i][j]
+                    x = j
+                    if x < n * 2 - 1:
+                        pascal_list[y][x] += pascal_list[i][j]
+
+else:
+    pascal_list = list([0] * n for _ in range(n))
+    pascal_list[0][0] = 1
+    for i in range(n):
+        for j in range(n):
+            if pascal_list[i][j] == 0:
+                pascal_list[i][j] = ''
+            else:
+                y = i + 1
+                x = j
+                if y < n and x < n - 1:
+                    pascal_list[y][x] += pascal_list[i][j]
+                    pascal_list[y][x + 1] += pascal_list[i][j]
+    if m == 3:
+        for i in range(n):
+            for j in range(n):
+                if i + j < n-1:
+                    pascal_list[i][j], pascal_list[n - j - 1][n - i - 1] = pascal_list[n -j - 1][n - i - 1], pascal_list[i][j]
+                else:
+                    break
+
+for i in range(n):
+    print(*pascal_list[i])
+```
+
+
+
+
+
 
 
 ## code1146 선택정렬(time  5m)
