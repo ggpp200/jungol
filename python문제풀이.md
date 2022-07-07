@@ -457,6 +457,154 @@ else:
 
 
 
+## code1719 별삼각형2(time 1h 12m)
+
+```bash
+n, m = map(int, input().split())
+first_star_list = [0, 1, 1, n // 2, n // 2]
+
+
+if 1 <= n < 100 and n % 2 == 1 and 1 <= m <= 4 and m % 1 == 0:
+    star = first_star_list[m]
+    if m == 1:
+        for idx in range(n):
+            for _ in range(star):
+                print('*', end='')
+            if idx - n // 2 < 0:
+                star += 1
+            else:
+                star -= 1
+            print()
+    elif m == 2:
+        for idx in range(n):
+            for jdx in range(n // 2 + 1):
+                if (n // 2) - jdx < star:
+                    print('*', end='')
+                else:
+                    print(end=' ')
+            if idx - n // 2 < 0:
+                star += 1
+            else:
+                star -= 1
+            print()
+    elif m == 3:
+        for idx in range(n):
+            for jdx in range(n):
+                if n // 2 - star <= jdx <= n // 2 + star:
+                    print('*', end='')
+                else:
+                    print(end=' ')
+            if idx - n // 2 < 0:
+                star -= 1
+            else:
+                star += 1
+            print()
+    else:
+        for idx in range(n):
+            for jdx in range(n):
+                half = n // 2
+                if half - star <= jdx <= half + star:
+                    if (idx <= half and jdx <= half) or (idx >= half and jdx >= half):
+                        print('*', end='')
+                    else:
+                        print(end=' ')
+                else:
+                    print(end=' ')
+            if idx - n // 2 < 0:
+                star -= 1
+            else:
+                star += 1
+            print()
+
+
+else:
+    print("INPUT ERROR!")
+```
+
+
+
+## code1329 별삼각형3(time 4m 51s)
+
+```bash
+N = int(input())
+star = 1
+before_star = 0
+
+if 1 <= N <= 99 and N % 2 == 1:
+    for y_star in range(N):
+        for _ in range(before_star):
+            print(end=' ')
+        for _ in range(star):
+            print('*', end='')
+        print()
+        if y_star < N // 2:
+            before_star += 1
+            star += 2
+        else:
+            before_star -= 1
+            star -= 2
+
+else:
+    print("INPUT ERROR!")
+```
+
+
+
+
+
+## code1641  숫자삼각형(time 56m 42s)
+
+```bash
+n, m = map(int, input().split())
+number = 1
+j_number = 0
+before_star = 0
+
+if 1 <= n <= 99 and n % 2 == 1 and 1 <= m <= 3 and m % 1 == 0:
+    for i in range(n):
+        if m == 1:
+            j_number = number
+            for j in range((i + 1)):
+                if i % 2 == 0 and j != 0:
+                    j_number += 1
+                elif j != 0:
+                    j_number -= 1
+                print(j_number, end=' ')
+            if i % 2 == 0:
+                number += (i + 1) * 2
+            else:
+                number += 1
+            print()
+
+        elif m == 2:
+            for j in range(n * 2 - 1):
+                if i <= j < n * 2 - i - 1:
+                    print(i, end=' ')
+                else:
+                    print(' ', end=' ')
+            print()
+
+        else:
+            for j in range(number):
+                print(j + 1, end=' ')
+            if i < n // 2:
+                number += 1
+            else:
+                number -= 1
+            print()
+
+else:
+    print("INPUT ERROR!")
+```
+
+
+
+
+
+
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
@@ -472,6 +620,22 @@ for index in range(N - 1):
     N_list[index], N_list[idx] = N_list[idx], N_list[index]
     print(*N_list)
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
