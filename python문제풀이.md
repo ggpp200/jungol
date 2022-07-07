@@ -763,6 +763,79 @@ for idx in range((n * 2) - 1):
 
 
 
+## code1495 대각선 지그재그(time 30m 20s)
+
+```bash
+n = int(input())
+number = 1
+field = list([0] * n for _ in range(n))
+di = [1, -1, 0, 1]
+dj = [0, 1, 1, -1]
+case = 0
+i = 0
+j = 0
+while 1:
+    if i == n - 1 and j == 0:
+        di = [0, -1, 1, 1]
+        dj = [1, 1, 0, -1]
+    stop = 0
+    field[i][j] = number
+    for f_i in range(2):
+        y = i + di[(case + f_i) % 4]
+        x = j + dj[(case + f_i) % 4]
+        if 0 <= y < n and 0 <= x < n and field[y][x] == 0:
+            i = y
+            j = x
+            case = (case + f_i) % 4
+            if case % 2 == 0:
+                case += 1
+            number += 1
+            break
+        stop += 1
+    if stop == 2:
+        break
+
+for idx in range(n):
+    print(*field[idx])
+
+```
+
+
+
+## code2074 홀수 마방진(time 11m 40s)
+
+```bash
+n = int(input())
+number = 1
+field = list([0] * n for _ in range(n))
+di = [1, -1, 0, 1]
+dj = [0, 1, 1, -1]
+case = 0
+i = 0
+j = n // 2
+while 1:
+    if field[i][j] == 0:
+        field[i][j] = number
+    else:
+        break
+    if number % n == 0:
+        i = i + 1
+    else:
+        i -= 1
+        j -= 1
+    if 0 > i:
+        i = n - 1
+    if i > n - 1:
+        i = 0
+    if 0 > j:
+        j = n - 1
+    number += 1
+for idx in range(n):
+    print(*field[idx])
+```
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
