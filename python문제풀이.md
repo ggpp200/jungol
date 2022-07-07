@@ -599,7 +599,44 @@ else:
 
 
 
+## code1337  달팽이삼각형(time 1h 22m 06s)
 
+```bash
+N = int(input())
+number = 0
+
+field = list([''] * N for _ in range(N))
+case_list = [[1, 1], [0, -1], [-1, 0]]
+case = 0
+i = 0
+j = 0
+while 1:
+    field[i][j] = number
+    y = i + case_list[case][0]
+    x = j + case_list[case][1]
+    if 0 <= y < N and 0 <= x < N and field[y][x] == '':
+
+        i = y
+        j = x
+    else:
+        case = (case + 1) % 3
+        y2 = i + case_list[case][0]
+        x2 = j + case_list[case][1]
+        if 0 <= y2 < N and 0 <= x2 < N:
+            if field[y2][x2] == '':
+                i = y2
+                j = x2
+            else:
+                break
+        else:
+            break
+    number += 1
+    if number % 10 == 0:
+        number = 0
+
+for line in range(N):
+    print(* field[line])
+```
 
 
 
