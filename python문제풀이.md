@@ -836,7 +836,101 @@ for idx in range(n):
 
 
 
-## code1009 각 자리수의 역과 합(time 30m 20s)
+## code1009 각 자리수의 역과 합(time 45m 20s)
+
+```bash
+while 1:
+    number = int(input())
+    case = 0
+    if number == 0:
+        break
+    number_list = []
+    while number != 0:
+        number_list.append(number % 10)
+        number = number // 10
+    for i in range(len(number_list)):
+        if number_list[i] != 0:
+            case = 1
+        if case != 0:
+            print(number_list[i], end='')
+    print('', end=' ')
+    print(sum(number_list), end='')
+    print()
+        
+
+
+```
+
+
+
+## code2811 소수와 합성수(time 29m 15s)
+
+```bash
+number_list = list(map(int, input().split()))
+for idx in range(len(number_list)):
+    cnt = 0
+    for i in range(1, int(number_list[idx] ** (1/2)) + 1):
+        if number_list[idx] == 1:
+            break
+        if number_list[idx] % i == 0:
+            cnt += 1
+    if cnt == 0:
+        print('number one')
+    elif cnt == 1:
+        print('prime number')
+    else:
+        print('composite number')
+
+
+```
+
+
+
+
+
+## code1901 소수 구하기(time  30m)
+
+```bash
+def prime(num):
+    cnt = 0
+    p_i = 2
+    while p_i <= num ** (1/2):
+        if num % p_i == 0:
+            num = num // p_i
+            cnt += 1
+        else:
+            p_i += 1
+        if cnt > 1:
+            break
+    if num != 0:
+        cnt += 1
+    if cnt == 1:
+        return 0
+    else:
+        return 1
+
+
+
+
+N = int(input())
+for test_c in range(N):
+    number = int(input())
+    num_i = 0
+    flag = 0
+    while 1:
+        if num_i != 0:
+            if prime(number - num_i) == 0:
+                flag = 1
+                print(f'{number - num_i}', end=' ')
+
+        if prime(number + num_i) == 0:
+            flag = 1
+            print(f'{number + num_i}', end=' ')
+        num_i += 1
+        if flag == 1:
+            break
+    print()
+```
 
 
 
