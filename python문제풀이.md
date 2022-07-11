@@ -836,6 +836,10 @@ for idx in range(n):
 
 
 
+## code1009 각 자리수의 역과 합(time 30m 20s)
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
