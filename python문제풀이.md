@@ -886,8 +886,6 @@ for idx in range(len(number_list)):
 
 
 
-
-
 ## code1901 소수 구하기(time  30m)
 
 ```bash
@@ -930,6 +928,37 @@ for test_c in range(N):
         if flag == 1:
             break
     print()
+```
+
+
+
+## code1740 소수(time 1h 1m 58s)
+
+```bash
+def prime(num):
+    num_div = 2
+    num_max = int(num ** (1/2)) + 1
+    if num == 1:
+        return 0
+    while num_div <= num_max:
+        if num % num_div == 0 and num != num_div:
+            return 0
+        else:
+            num_div += 1
+    return 1
+
+
+M = int(input())
+N = int(input())
+prime_list = []
+for number in range(M, N + 1):
+    if prime(number) == 1:
+        prime_list.append(number)
+if len(prime_list) > 0:
+    print(sum(prime_list))
+    print(min(prime_list))
+else:
+    print(-1)
 ```
 
 
