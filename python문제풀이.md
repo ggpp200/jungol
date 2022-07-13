@@ -1017,6 +1017,39 @@ print(sum_num)
 
 
 
+## code2814 이진수(time 26m 13s)
+
+```bash
+def change(num, T):
+    change_list = []
+    chr_list = [
+        'A', 'B', 'C', 'D', 'E', 'F'
+    ]
+    c_cnt = 0
+    while num > -1:
+        mul = T ** (c_cnt - 1)
+        if num < mul * T:
+            change_list.append(num // mul)
+            num = num - mul * (num // mul)
+
+            c_cnt -= 1
+        else:
+            c_cnt += 1
+        if num < T:
+            change_list.append(num)
+            break
+    for c_num in change_list:
+        if c_num > 9:
+            print(chr_list[c_num - 10], end='')
+        else:
+            print(c_num, end='')
+
+M, N = map(int, input().split())
+change(M, N)
+```
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
