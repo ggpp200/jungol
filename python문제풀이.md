@@ -963,6 +963,47 @@ else:
 
 
 
+## code2814 소수의 개수(time 2h 44m 14s)
+
+```bash
+def make_list():
+    prime_list[0] = 1
+    prime_list[1] = 1
+    l_num = int(2000001 ** (1 / 2) + 1)
+    for l_n in range(2, l_num):
+        if prime_list[l_n] == 0:
+            for l_n_n in range(l_n + 1, l_num):
+                if l_n_n % l_n == 0:
+                    prime_list[l_n_n] = 1
+
+def prime(num):
+    for div in new_list:
+        if div < num and num % div == 0:
+            return 0
+    return 1
+
+
+
+M, N = map(int, input().split())
+cnt = 0
+prime_list = [0] * int(2000001 ** (1 / 2) + 1)
+make_list()
+new_list = []
+for n_l_i in range(len(prime_list)):
+    if prime_list[n_l_i] == 0:
+        new_list.append(n_l_i)
+for number in range(M, N + 1):
+    if prime(number) == 1:
+        cnt += 1
+if M == 1:
+    cnt -= 1
+print(cnt)
+```
+
+
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
