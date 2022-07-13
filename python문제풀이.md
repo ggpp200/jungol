@@ -963,7 +963,7 @@ else:
 
 
 
-## code2814 소수의 개수(time 2h 44m 14s)
+## code2813 소수의 개수(time 2h 44m 14s)
 
 ```bash
 def make_list():
@@ -1001,6 +1001,19 @@ print(cnt)
 ```
 
 
+
+## code2814 이진수(time 4m 33s)
+
+```bash
+bin_num = int(input())
+cnt = 0
+sum_num = 0
+while bin_num > 0:
+    sum_num += bin_num % 10 * 2 ** (cnt)
+    cnt += 1
+    bin_num = bin_num // 10
+print(sum_num)
+```
 
 
 
