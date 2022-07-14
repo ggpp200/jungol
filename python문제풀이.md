@@ -1017,7 +1017,7 @@ print(sum_num)
 
 
 
-## code2814 이진수(time 26m 13s)
+## code2814 10진수를 2,8,16진수로(time 26m 13s)
 
 ```bash
 def change(num, T):
@@ -1047,6 +1047,64 @@ def change(num, T):
 M, N = map(int, input().split())
 change(M, N)
 ```
+
+
+
+## code3106 진법 변환(time 2h 6m 51s)
+
+```bash
+def change(before, num, after):
+    num_list = []
+    dicimal_num = 0
+    dicimal_i = 0
+    after_list = []
+    num_dic = {
+                '0': 0, '1': 1, '2': 2, '3': 3, '4': 4,
+                '5': 5, '6': 6, '7': 7, '8': 8, '9': 9,
+                'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14,
+                'F': 15, 'G': 16, 'H': 17, 'I': 18, 'J': 19,
+                'K': 20, 'L': 21, 'M': 22, 'N': 23, 'O': 24,
+                'P': 25, 'Q': 26, 'R': 27, 'S': 28, 'T': 29,
+                'U': 30, 'V': 31, 'W': 32, 'X': 33, 'Y': 34,
+                'Z': 35}
+
+    decode_list = [
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+    ]
+    for one_num in num:
+        num_list.append(num_dic[one_num])
+    for list_i in range(len(num_list)):
+        dicimal_num += num_list[list_i] * before ** (len(num_list) - list_i - 1)
+    if before == 10:
+        a = 1
+    while dicimal_num > -1:
+        floor = after ** dicimal_i
+        if dicimal_num < floor * after:
+            if dicimal_num // floor > 9:
+                after_list.append(decode_list[dicimal_num // floor - 10])
+            else:
+                after_list.append(str(dicimal_num // floor))
+            dicimal_num = dicimal_num - (dicimal_num // floor) * floor
+            dicimal_i -= 1
+        else:
+            dicimal_i += 1
+        if dicimal_i == -1:
+            break
+    word = ''.join(after_list)
+    print(word)
+
+
+while 1:
+    AsB = list(input().split())
+    if AsB[0] == '0':
+        break
+    else:
+        change(int(AsB[0]), AsB[1], int(AsB[2]))
+
+```
+
+
 
 
 
