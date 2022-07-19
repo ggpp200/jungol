@@ -1106,6 +1106,52 @@ while 1:
 
 
 
+## code4977 실수의 이진수(time 3h)
+
+```b
+def make_int(num):
+    floor_i = 0
+    bin_list = []
+    while num >= 0:
+        floor = 2 ** floor_i
+        if num < floor * 2:
+            div = num // floor
+            bin_list.append(str(div))
+            num = num - div * floor
+            floor_i -= 1
+        else:
+            floor_i += 1
+        if num == 0:
+            while floor_i >= 0:
+                floor_i -= 1
+                bin_list.append('0')
+            return bin_list
+
+def make_float(num):
+    bin_list = []
+    for i in range(1, 5):
+        if num - 2 ** (-i) >= 0:
+            num = num - 2 ** (-i)
+            bin_list.append('1')
+        else:
+            bin_list.append('0')
+    return bin_list
+
+N = float(input())
+N_int = int(N)
+N_float = N - N_int
+a = make_int(N_int)
+b = make_float(N_float)
+if len(a) > 0:
+    print(''.join(a), end='')
+else:
+    print(0, end='')
+print('.', end='')
+if len(b) > 0:
+    print(''.join(b), end='')
+
+```
+
 
 
 ## code1146 선택정렬(time  5m)
