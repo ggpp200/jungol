@@ -1174,6 +1174,57 @@ print(width)
 
 
 
+## code2514 문자열 찾기(time 12m 32s)
+
+```bash
+word_list = input()
+K_cnt = 0
+I_cnt = 0
+idx = 2
+while idx < len(word_list):
+    if word_list[idx] == 'I':
+        if word_list[idx - 2] == 'K':
+            if word_list[idx - 1] == 'O':
+                K_cnt += 1
+            idx += 2
+
+        elif word_list[idx - 2] == 'I':
+            if word_list[idx - 1] == 'O':
+                I_cnt += 1
+            idx += 2
+        else:
+            idx += 2
+    else:
+        idx += 1
+print(K_cnt)
+print(I_cnt)
+```
+
+
+
+## code2857 세로읽기(time 37m 55s)
+
+```bash
+word_list = list(input() for _ in range(5))
+on_off = []
+for l_i in range(5):
+    on_off.append(len(word_list[l_i]))
+max_i = 0
+for o_i in on_off:
+    if max_i < o_i:
+        max_i = o_i
+i = 0
+new_list = []
+while max_i > i:
+    for j in range(5):
+        if on_off[j] > i:
+            new_list.append(word_list[j][i])
+    i += 1
+print(''.join(new_list))
+```
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
