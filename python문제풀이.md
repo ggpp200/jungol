@@ -1154,6 +1154,26 @@ if len(b) > 0:
 
 
 
+## code2604 그릇(time  5m 19s)
+
+```bash
+bowl_list = input()
+before = 0
+width = 0
+for bowl in bowl_list:
+    if before == 0:
+        before = bowl
+        width += 10
+    elif before == bowl:
+        width += 5
+    else:
+        before = bowl
+        width += 10
+print(width)
+```
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
