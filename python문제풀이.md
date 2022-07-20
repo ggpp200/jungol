@@ -1225,6 +1225,28 @@ print(''.join(new_list))
 
 
 
+## code1880 암호풀기(Message Decoding)(time 49m 57s)
+
+```bash
+code_list = input()
+word_list = input()
+
+new_list = []
+for word in word_list:
+    ord_num = ord(word)
+    if word == ' ':
+        new_list.append(' ')
+    elif 64 < ord_num < 91:
+
+        new_list.append(chr(ord(code_list[ord_num - 65]) - 32))
+    else:
+        new_list.append(chr(ord(code_list[ord_num - 97])))
+print(''.join(new_list))
+
+```
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
