@@ -1247,6 +1247,22 @@ print(''.join(new_list))
 
 
 
+## code1535 단어집합2(time 31m 2s)
+
+```bash
+overlap = []
+while 1:
+    word_list = input().split()
+    if word_list[0] == 'END':
+        break
+    for word in word_list:
+        if word not in overlap:
+            overlap.append(word)
+    print(*overlap)
+```
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
@@ -1262,22 +1278,6 @@ for index in range(N - 1):
     N_list[index], N_list[idx] = N_list[idx], N_list[index]
     print(*N_list)
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
