@@ -1263,6 +1263,98 @@ while 1:
 
 
 
+## code 4987 STL - String(time 1h 51m 9s)
+
+```bash
+S = list(input())
+T = list(input())
+first_list = []
+for idx in range(len(S)):
+    if S[idx] == T[0]:
+        first_list.append(idx)
+while len(first_list):
+    cnt = 0
+    for i in first_list:
+        if i + len(T) - 1 <= len(S):
+            if S[i:i + len(T)] == T[0:len(T)]:
+                for _ in range(i, i + len(T)):
+                    S.pop(i)
+                s_i = 0
+                while s_i < len(first_list):
+                    if first_list[s_i] == i:
+                        first_list.pop(s_i)
+                        s_i -= 1
+                    elif first_list[s_i] > i:
+                        first_list[s_i] = first_list[s_i] - len(T)
+                    if s_i == len(first_list) - 1:
+                        break
+                    s_i += 1
+                cnt += 1
+    if cnt == 0:
+        break
+print(''.join(S))
+
+```
+
+
+
+## code 5096 STL - String 2 (stringstream)(time 16m 39s)
+
+```bash
+word_list = list(input().split())
+print(*sorted(word_list))
+```
+
+
+
+## code 1516 단어세기(time 1h 4m 41s)
+
+```bash
+while 1:
+    word_dict = dict()
+    word_list = input().split()
+    if word_list == ['END']:
+        break
+    for word_i in range(len(word_list)):
+        key = word_list[word_i]
+        if key in word_dict:
+            word_dict[key] += 1
+        else:
+            word_dict[key] = 1
+    sort_list = sorted(word_list)
+    if sort_list != ['END']:
+        before = 0
+        for key in sort_list:
+            if before != key:
+                before = key
+                print(f'{key} : {word_dict[key]}')
+```
+
+
+
+## code3699 변장(time 7h 38m 15s)
+
+```bash
+TC = int(input())
+for test_case in range(0, TC):
+    costume_dict = dict()
+    costume_num = int(input())
+    costume_list = list(input().split() for _ in range(costume_num))
+    for i in range(costume_num):
+        key = costume_list[i][1]
+        if key in costume_dict:
+            costume_dict[key] += 1
+        else:
+            costume_dict[key] = 2
+    value = 1
+    key_num = costume_dict.keys()
+    for add_value in key_num:
+        value = value * costume_dict[add_value]
+    print(value - 1)
+```
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
