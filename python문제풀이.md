@@ -1355,6 +1355,24 @@ for test_case in range(0, TC):
 
 
 
+## code1438 색종이(초)(time 21m 37s)
+
+```bash
+paper_num = int(input())
+template = list([0]*100 for _ in range(100))
+for _ in range(paper_num):
+    x_y = list(map(int, input().split()))
+    for i in range(10):
+        for j in range(10):
+             template[x_y[1] + i][x_y[0] + j] = 1
+sum_num = 0
+for i in range(100):
+    sum_num += sum(template[i])
+print(sum_num)
+```
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
