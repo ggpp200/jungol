@@ -1373,6 +1373,51 @@ print(sum_num)
 
 
 
+## code1671 색종이(중)(time 2h 10m 54s)
+
+```bash
+paper_num = int(input())
+cnt = 0
+template = list([0] * 100 for _ in range(100))
+x_y_list = []
+di = [0, 1, 0, -1]
+dj = [1, 0, -1, 0]
+for _ in range(paper_num):
+    one_x_y = list(map(int, input().split()))
+    x_y_list.append(one_x_y)
+    for i in range(0, 10):
+        for j in range(0, 10):
+            template[i + one_x_y[1]][j + one_x_y[0]] += 1
+for y_x in x_y_list:
+    for i in range(0, 10):
+        for j in range(0, 10, 9):
+            if template[i + y_x[1]][j + y_x[0]] > 0:
+                case = 0
+                for d in range(4):
+                    if 0 <= i + y_x[1] + di[d] < 100 and 0 <= j + y_x[0] + dj[d] < 100:
+                        if template[i + y_x[1] + di[d]][j + y_x[0] + dj[d]] == 0:
+                            case += 1
+                    else:
+                        case += 1
+                if case > 0:
+                    cnt += case
+            template[i + y_x[1]][j + y_x[0]] = -1
+            if template[j + y_x[1]][i + y_x[0]] > 0:
+                case = 0
+                for d in range(4):
+                    if 0 <= j + y_x[1] + di[d] < 100 and 0 <= i + y_x[0] + dj[d] < 100:
+                        if template[j + y_x[1] + di[d]][i + y_x[0] + dj[d]] == 0:
+                            case += 1
+                    else:
+                        case += 1
+                if case > 0:
+                    cnt += case
+            template[j + y_x[1]][i + y_x[0]] = -1
+print(cnt)
+```
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
