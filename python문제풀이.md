@@ -1418,6 +1418,36 @@ print(cnt)
 
 
 
+## code1997 떡먹는 호랑이(time 22m 47s)
+
+```bash
+D, K = map(int, input().split())
+fibo_a = []
+fibo_b = []
+i = 0
+while i < D:
+    if i < 2:
+        fibo_a.append(1 - i)
+        fibo_b.append(i)
+    else:
+        fibo_a.append(fibo_a[i - 1] + fibo_a[i - 2])
+        fibo_b.append(fibo_b[i - 1] + fibo_b[i - 2])
+    i += 1
+mul = 1
+a = 0
+b = 0
+while K > fibo_a[-1] * mul:
+    if (K - fibo_a[-1] * mul) % fibo_b[-1] == 0:
+        a = mul
+        b = (K - fibo_a[-1] * mul) // fibo_b[-1]
+        break
+    mul += 1
+print(a)
+print(b)
+```
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
