@@ -1448,6 +1448,33 @@ print(b)
 
 
 
+## code2259 참외밭(time 1h 1m 17s)
+
+```bash
+melon_num = int(input())
+visit_list = [0] * 5
+visit_num_list = [0] * 5
+num_list = []
+min_val = 0
+for _ in range(6):
+    direction, distance = map(int, input().split())
+    if visit_list[direction] == 0:
+        visit_list[direction] = distance
+    visit_num_list[direction] += 1
+    num_list.append([direction, distance])
+max_length = 1
+for visit_i in range(5):
+    if visit_num_list[visit_i] == 1:
+        max_length = max_length * visit_list[visit_i]
+min_length = 1
+for idx in range(6):
+    if num_list[(idx - 1) % 6][0] == num_list[(idx + 1) % 6][0]:
+        min_length = min_length * num_list[idx % 7][1]
+print((max_length - min_length) * melon_num)
+```
+
+
+
 ## code1146 선택정렬(time  5m)
 
 ```
